@@ -1,0 +1,191 @@
+/* Navbar base */
+.navbar {
+  background: linear-gradient(135deg, #221209, #2d180c);
+  color: #ffa500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 12rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.chef-hat {
+  font-size: 35px; 
+  margin-right: 5px; 
+}
+
+.logo-text {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+/* Nav Links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: #ffa500;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.nav-links li a:hover {
+  color: #eaaf6b;
+  text-decoration: none;
+}
+
+
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #ffa500;
+  border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Cart + Profile */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.cart-link {
+  font-size: 24px;
+  cursor: pointer;
+  color: #ffa500;
+  text-decoration: none;
+}
+
+.profile-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-icon {
+  font-size: 28px;
+  color: #ffa500;
+}
+
+/* Profile Dropdown */
+.profile-dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background-color: #ffa500;
+  color: #333;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+}
+
+.profile-dropdown a,
+.profile-dropdown button {
+  padding: 10px;
+  background: none;
+  border: none;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.profile-dropdown a:hover,
+.profile-dropdown button:hover {
+  background-color: #221209;
+  color: #ffa500;
+}
+
+/* Responsive: Tablets & Phones */
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: 0.8rem 2rem;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: linear-gradient(135deg, #221209, #2d180c);
+    flex-direction: column;
+    width: 200px;
+    padding: 15px;
+    gap: 10px;
+    display: none;
+    border-radius: 6px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .nav-links {
+    width: 150px;
+    right: 10px;
+    padding: 10px;
+  }
+
+  .nav-links li a {
+    font-size: 14px;
+  }
+
+  .logo-text {
+    font-size: 18px;
+  }
+
+  .chef-hat {
+    font-size: 20px;
+  }
+
+  .cart-link {
+    font-size: 22px;
+  }
+
+  .profile-icon {
+    font-size: 24px;
+  }
+}

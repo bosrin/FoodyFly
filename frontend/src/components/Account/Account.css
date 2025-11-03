@@ -1,0 +1,185 @@
+.account-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e1208, #2a150b);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.account-box {
+  background: #3b2414;
+  padding: 2.5rem;
+  border-radius: 12px;
+  width: 380px;
+  max-width: 90%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  border: 2px solid #ffb84d;
+  text-align: center;
+  color: #f9e4c8;
+}
+
+.account-title {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #ffb84d;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  background: #4a2b14;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.input-box input {
+  border: none;
+  background: transparent;
+  outline: none;
+  color: #f9e4c8;
+  flex: 1;
+  padding: 0.5rem;
+}
+
+.icon {
+  margin-right: 0.75rem;
+  color: #ffb84d;
+}
+
+.eye-icon {
+  cursor: pointer;
+  margin-left: 0.5rem;
+  color: #ffb84d;
+}
+
+.main-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #ffb84d;
+  border: none;
+  border-radius: 8px;
+  color: #3b2414;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: 0.3s;
+}
+
+.main-btn:hover {
+  background: #ff9f00;
+}
+
+.toggle-link {
+  margin-top: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #ffcc80;
+}
+
+.toggle-link:hover {
+  text-decoration: underline;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #f8dcb3;
+}
+
+/* Role select dropdown */
+.role-select {
+  display: flex;
+  align-items: center;
+  background: #4a2b14;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.role-select .icon {
+  color: #ffb84d;
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.role-select select {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+  background: transparent;
+  color: #f8dcb3;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  appearance: none;
+}
+
+.role-select::after {
+  content: "▼";
+  position: absolute;
+  right: 15px;
+  color: #ffb84d;
+  font-size: 0.8rem;
+  pointer-events: none;
+}
+
+.role-select select option {
+  background: #3b2414;
+  color: #f8dcb3;
+  font-family: "Poppins", sans-serif;
+}
+
+
+
+.role-select:hover,
+.role-select select:focus {
+  box-shadow: 0 0 10px rgba(255, 184, 77, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .account-box {
+    width: 90%;
+    padding: 1.8rem;
+    border-radius: 10px;
+  }
+  .account-title {
+    font-size: 1.5rem;
+  }
+  .main-btn {
+    padding: 0.6rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .account-container {
+    padding: 0.5rem;
+  }
+  .account-box {
+    width: 100%;
+    padding: 1.5rem;
+    box-shadow: none;
+    border: 1px solid #ffb84d;
+  }
+  .account-title {
+    font-size: 1.3rem;
+  }
+  .main-btn {
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,599 @@
+
+/* ====== Menu Showcase Section ====== */
+.menu-showcase {
+  padding: 6rem 10%;
+  background: linear-gradient(135deg, #221209, #2d180c);
+  color: #fff;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Section Title */
+.menu-section-title {
+  font-size: 2.5rem;
+  font-family: "Playfair Display", serif;
+  color: #ffb347;
+  margin-bottom: 0.5rem;
+}
+
+.menu-section-sub {
+  font-size: 1.1rem;
+  color: #ffdd70;
+  margin-bottom: 3rem;
+  font-style: italic;
+}
+
+/* ===== Tabs ===== */
+.menu-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.menu-tab {
+  padding: 0.7rem 1.8rem;
+  border: 2px solid #ffb347;
+  border-radius: 30px;
+  background: transparent;
+  color: #ffb347;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.menu-tab:hover,
+.menu-tab.active {
+  background: #ffb347;
+  color: #1b0f06;
+  transform: translateY(-2px);
+}
+
+/* ===== Menu Card ===== */
+.menu-card {
+  background: #2d180c;
+  border-radius: 16px;
+  padding: 1.5rem;
+  max-width: 280px;
+  margin: 0 auto;
+  box-shadow: 0 0 15px rgba(255, 150, 70, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(255, 150, 70, 0.25);
+}
+
+
+.menu-card h3 {
+  font-size: 1.2rem;
+  color: #ffcc80;
+  margin-bottom: 0.5rem;
+}
+
+.menu-card p {
+  color: #e0c9a6;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 3rem; 
+  justify-items: center; 
+}
+
+.menu-card img {
+  width: 230px;       
+  height: 200px;     
+  object-fit: contain; 
+  border-radius: 8px;  
+ 
+}
+
+
+/* Price & Add Button */
+.price-add {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffdd70;
+}
+
+.price-add button {
+  background: #ff6b35;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.price-add button:hover {
+  background: #ff944d;
+}
+
+/* ===== Explore Button ===== */
+.explore-btn {
+  margin-top: 3rem;
+  background: #ffb347;
+  color: #1b0f06;
+  border: none;
+  padding: 0.9rem 2.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.explore-btn:hover {
+  background: #ff944d;
+  transform: translateY(-3px);
+}
+
+
+/* ======================= Tablet (768px - 1023px) ======================= */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .menu-showcase {
+    padding: 4rem 6%;
+  }
+
+  .menu-section-title {
+    font-size: 2.2rem;
+  }
+
+  .menu-section-sub {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .menu-tabs {
+    gap: 0.8rem;
+  }
+
+  .menu-tab {
+    padding: 0.6rem 1.5rem;
+  }
+
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .menu-card img {
+    width: 200px;
+    height: 180px;
+  }
+
+  .menu-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .menu-card p {
+    font-size: 0.9rem;
+  }
+
+  .price-add button {
+    padding: 0.5rem 0.8rem;
+  }
+
+  .explore-btn {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* ======================= Mobile (phones) ======================= */
+@media (max-width: 767px) {
+  .menu-showcase {
+    padding: 3rem 5%;
+  }
+
+  .menu-section-title {
+    font-size: 1.8rem;
+  }
+
+  .menu-section-sub {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+
+  .menu-tabs {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .menu-tab {
+    width: 100%;
+    text-align: center;
+    padding: 0.6rem 0;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .menu-card {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .menu-card img {
+    width: 100%;
+    height: 150px;
+  }
+
+  .menu-card h3 {
+    font-size: 1rem;
+  }
+
+  .menu-card p {
+    font-size: 0.85rem;
+  }
+
+  .price-add {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .price-add button {
+    width: 100%;
+    padding: 0.5rem 0;
+  }
+
+  .explore-btn {
+    width: 100%;
+    padding: 0.7rem 0;
+    font-size: 0.95rem;
+  }
+}
+
+/* ===== Footer Section ===== */
+.footer {
+  background-color:#2d180c; /* deep background for contrast */
+  color: #f8f8f8;
+  padding: 60px 8%;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 90px; /* ↓ gap 40px theke 20px kora holo */
+  align-items: flex-start;
+}
+
+
+
+/* === About Section === */
+.footer-about {
+  padding-left: 40px;
+}
+.footer-about h3 {
+  font-size: 1.8rem;
+  color: #ffb347; /* warm accent */
+  margin-bottom: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.footer-about p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #ccc;
+  margin-bottom: 25px;
+}
+
+/* === Subscribe Box === */
+.subscribe {
+  display: flex;
+  background: #1a1a1a;
+  border-radius: 50px;
+  overflow: hidden;
+  max-width: 320px;
+  border: 1px solid #333;
+}
+
+.subscribe input {
+  flex: 1;
+  padding: 12px 18px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.subscribe input::placeholder {
+  color: #aaa;
+}
+
+.subscribe button {
+  background: #ffb347;
+  border: none;
+  color: #111;
+  padding: 12px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.subscribe button:hover {
+  background: #ff9800;
+}
+
+/* === Quick Links === */
+.footer-nav{
+  padding-left: 130px;
+}
+.footer-nav h4,
+.footer-social h4 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #fff;
+  font-weight: 600;
+  position: relative;
+}
+
+.footer-nav h4::after,
+.footer-social h4::after {
+  content: "";
+  position: absolute;
+  width: 35px;
+  height: 2px;
+  background: #ffb347;
+  left: 0;
+  bottom: -5px;
+}
+
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-nav li {
+  margin: 10px 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer-nav li:hover {
+  color: #ffb347;
+}
+
+/* === Social Icons === */
+.footer-social{
+  padding-right: 90px;
+}
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons i {
+  font-size: 1.5rem;
+  color: #f8f8f8;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.social-icons i:hover {
+  color: #ffb347;
+  transform: scale(1.2);
+}
+
+
+/* === Footer Bottom Text === */
+.footer-copy {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #aaa;
+  border-top: 1px solid #222;
+  padding-top: 25px;
+  margin-top: 20px;
+}
+
+.footer-copy span {
+  color: #ffb347;
+  font-weight: 500;
+}
+
+/* ===== Footer Section ===== */
+.footer {
+  background-color: #2d180c;
+  color: #f8f8f8;
+  padding: 60px 8%;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px; /* responsive-friendly gap */
+  align-items: flex-start;
+}
+
+/* === About Section === */
+.footer-about {
+  padding-left: 40px;
+}
+.footer-about h3 {
+  font-size: 1.8rem;
+  color: #ffb347;
+  margin-bottom: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.footer-about p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #ccc;
+  margin-bottom: 25px;
+}
+
+/* === Subscribe Box === */
+.subscribe {
+  display: flex;
+  background: #1a1a1a;
+  border-radius: 50px;
+  overflow: hidden;
+  max-width: 320px;
+  border: 1px solid #333;
+}
+.subscribe input {
+  flex: 1;
+  padding: 12px 18px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #fff;
+  font-size: 0.95rem;
+}
+.subscribe input::placeholder {
+  color: #aaa;
+}
+.subscribe button {
+  background: #ffb347;
+  border: none;
+  color: #111;
+  padding: 12px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.subscribe button:hover {
+  background: #ff9800;
+}
+
+/* === Quick Links === */
+.footer-nav {
+  padding-left: 150px;
+}
+.footer-nav h4,
+.footer-social h4 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #fff;
+  font-weight: 600;
+  position: relative;
+}
+.footer-nav h4::after,
+.footer-social h4::after {
+  content: "";
+  position: absolute;
+  width: 35px;
+  height: 2px;
+  background: #ffb347;
+  left: 0;
+  bottom: -5px;
+}
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-nav li {
+  margin: 10px 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.footer-nav li:hover {
+  color: #ffb347;
+}
+
+/* === Social Icons === */
+.footer-social {
+  padding-right: 90px;
+}
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+.social-icons i {
+  font-size: 1.5rem;
+  color: #f8f8f8;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.social-icons i:hover {
+  color: #ffb347;
+  transform: scale(1.2);
+}
+
+/* === Footer Bottom Text === */
+.footer-copy {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #aaa;
+  border-top: 1px solid #222;
+  padding-top: 25px;
+  margin-top: 20px;
+}
+.footer-copy span {
+  color: #ffb347;
+  font-weight: 500;
+}
+
+/* ===== Responsive Design ===== */
+
+/* Tablets (≤1024px) */
+@media (max-width: 1024px) {
+  .footer {
+    padding: 50px 6%;
+  }
+
+  .footer-columns {
+    gap: 30px;
+  }
+
+  .footer-nav {
+    padding-left: 40px;
+  }
+
+  .footer-social {
+    padding-right: 40px;
+  }
+}
+
+/* Phones (≤768px) */
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 5%;
+    text-align: center;
+  }
+
+  .footer-columns {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .footer-about,
+  .footer-nav,
+  .footer-social {
+    padding: 0;
+  }
+
+  .subscribe {
+    margin: 0 auto;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .footer-copy {
+    font-size: 0.85rem;
+    padding-top: 20px;
+  }
+}
+
+
