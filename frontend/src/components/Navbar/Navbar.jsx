@@ -9,6 +9,7 @@ export default function Navbar() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const navigate = useNavigate();
 
+  // ✅ Check login status on load
   useEffect(() => {
     const savedLogin = localStorage.getItem("foodyfly_loggedIn");
     if (savedLogin === "true") setUserLoggedIn(true);
@@ -19,26 +20,36 @@ export default function Navbar() {
     setProfileOpen(false);
   };
 
-  const handleLogin = () => {
-    setUserLoggedIn(true);
-    localStorage.setItem("foodyfly_loggedIn", "true");
-    navigate("/account");
+  const handleLockedClick = (e) => {
+    e.preventDefault();
+    alert("⚠️ Please log in first to access this section!");
   };
 
-  const handleLogout = () => {
-    setUserLoggedIn(false);
-    localStorage.removeItem("foodyfly_loggedIn");
-    alert("🔒 Logged out successfully!");
-    navigate("/");
+  // ✅ Wrapper for links that require login
+  const ProtectedLink = ({ to, children }) => {
+    if (userLoggedIn) {
+      return (
+        <Link to={to} onClick={handleLinkClick}>
+          {children}
+        </Link>
+      );
+    }
+    return (
+      <span className="locked" onClick={handleLockedClick}>
+        {children}
+      </span>
+    );
   };
 
   return (
     <nav className="navbar">
+      {/* Logo */}
       <div className="logo" onClick={() => navigate("/")}>
         <span className="chef-hat">👨‍🍳</span>
         <h1 className="logo-text">FoodyFly</h1>
       </div>
 
+      {/* Hamburger menu */}
       <div
         className={`hamburger ${menuOpen ? "active" : ""}`}
         onClick={() => setMenuOpen(!menuOpen)}
@@ -48,56 +59,52 @@ export default function Navbar() {
         <span></span>
       </div>
 
+      {/* Nav links */}
       <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
         <li>
           <Link to="/" onClick={handleLinkClick}>
             Home
           </Link>
         </li>
-
         <li>
-          <Link to="/menu" onClick={handleLinkClick}>
-            Menu
-          </Link>
+          <ProtectedLink to="/menu">Menu</ProtectedLink>
         </li>
-
         <li>
-          <Link to="/about" onClick={handleLinkClick}>
-            About
-          </Link>
+          <ProtectedLink to="/about">About</ProtectedLink>
         </li>
-
         <li>
-          <Link to="/contact" onClick={handleLinkClick}>
-            Contact
-          </Link>
+          <ProtectedLink to="/contact">Contact</ProtectedLink>
         </li>
       </ul>
 
+      {/* Right icons */}
       <div className="nav-actions">
+        {/* Cart */}
         <Link
-          to="/cart"
-          className="cart-link"
-          onClick={handleLinkClick}
+          to={userLoggedIn ? "/cart" : "#"}
+          className={`cart-link ${!userLoggedIn ? "disabled" : ""}`}
+          onClick={(e) => {
+            if (!userLoggedIn) handleLockedClick(e);
+            else handleLinkClick();
+          }}
         >
           🛒
         </Link>
 
+        {/* Profile dropdown */}
         <div
           className="profile-container"
           onClick={() => setProfileOpen(!profileOpen)}
         >
           <FaUserCircle className="profile-icon" />
-          {profileOpen && (
-            <div className="profile-dropdown">
+          {profileOpen && userLoggedIn && (
+            <div className="profile-dropdown" onClick={(e) => e.stopPropagation()}>
               <Link to="/profile" onClick={handleLinkClick}>
                 Profile
               </Link>
-              {userLoggedIn ? (
-                <button onClick={handleLogout}>Logout</button>
-              ) : (
-                <button onClick={handleLogin}>Login</button>
-              )}
+              <Link to="/admin/profile" onClick={handleLinkClick}>
+                Admin Profile
+              </Link>
             </div>
           )}
         </div>

@@ -8,23 +8,29 @@ import About from "./components/About/About";
 import Cart from "./components/Cart/Cart";
 import Profile from "./components/Profile/Profile";
 import Account from "./components/Account/Account";
+import AdminProfile from "./components/AdminProfile/AdminProfile";
 
 function App() {
   const [cart, setCart] = useState([]);
   const [userInfo, setUserInfo] = useState(() => {
-    return JSON.parse(localStorage.getItem("userInfo")) || {
-      name: "",
-      email: "",
-      address: "",
-      profilePic: "https://via.placeholder.com/120",
-    };
-  });
-  const [orderHistory, setOrderHistory] = useState(() => {
-    const allOrders = JSON.parse(localStorage.getItem("orderHistory")) || {};
-    return userInfo.email && allOrders[userInfo.email] ? allOrders[userInfo.email] : [];
+    return (
+      JSON.parse(localStorage.getItem("userInfo")) || {
+        name: "",
+        email: "",
+        address: "",
+        profilePic: "https://via.placeholder.com/120",
+      }
+    );
   });
 
-  // Sync localStorage whenever userInfo or orderHistory changes
+  const [orderHistory, setOrderHistory] = useState(() => {
+    const allOrders = JSON.parse(localStorage.getItem("orderHistory")) || {};
+    return userInfo.email && allOrders[userInfo.email]
+      ? allOrders[userInfo.email]
+      : [];
+  });
+
+  // ✅ Sync localStorage whenever userInfo or orderHistory changes
   useEffect(() => {
     localStorage.setItem("userInfo", JSON.stringify(userInfo));
     const allOrders = JSON.parse(localStorage.getItem("orderHistory")) || {};
@@ -68,7 +74,7 @@ function App() {
   // ✅ Add order to history
   const addOrder = (newOrder) => {
     setOrderHistory((prevHistory) => [newOrder, ...prevHistory]);
-    clearCart(); // Optionally clear cart after order
+    clearCart();
     console.log("✅ Order added:", newOrder);
   };
 
@@ -81,6 +87,9 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/admin/profile" element={<AdminProfile />} />
+
+        {/* ✅ User Profile */}
         <Route
           path="/profile"
           element={
@@ -91,6 +100,8 @@ function App() {
             />
           }
         />
+
+        {/* ✅ Cart */}
         <Route
           path="/cart"
           element={
@@ -99,7 +110,7 @@ function App() {
               addToCart={addToCart}
               removeFromCart={removeFromCart}
               clearCart={clearCart}
-              addOrder={addOrder} // Pass addOrder to Cart
+              addOrder={addOrder}
             />
           }
         />

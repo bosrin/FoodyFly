@@ -20,120 +20,80 @@ export default function Account() {
     username: "",
     email: "",
     password: "",
-    role: "",
+    role: "user", // default role
   });
 
   const [signinInfo, setSigninInfo] = useState({
     email: "",
     password: "",
-    role: "",
+    role: "user", // default role
   });
 
-  const [error, setError] = useState("");
-  const [notification, setNotification] = useState("");
-
-  const API_URL = "http://localhost:5000/api"; // backend URL
-
-  // ✅ Admin constants
+  // ✅ Local admin credentials
   const ADMIN_USERNAME = "FoodyFlyAdmin";
   const ADMIN_EMAIL = "admin@foodyfly.com";
   const ADMIN_PASSWORD = "admin123";
 
-  // 🧾 Handle Sign Up
-  const handleSignUp = async () => {
+  // 🧾 Handle Local Sign Up
+  const handleSignUp = () => {
     const { username, email, password, role } = signupInfo;
 
-    if (!username || !email || !password || !role) {
-      setError("All fields including role are required.");
-      alert("⚠️ All fields including role are required.");
+    if (!username || !email || !password) {
+      alert("⚠️ All fields are required.");
       return;
     }
 
-    // ❌ Prevent admin signup
+    // Prevent admin account creation
     if (role === "admin") {
-      setError("Admin account cannot be created manually.");
       alert("🚫 Admin account cannot be created manually.");
       return;
     }
 
-    try {
-      const res = await fetch(`${API_URL}/user/signup`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, email, password }),
-      });
+    const userData = { username, email, password, role };
+    localStorage.setItem("foodyfly_user", JSON.stringify(userData));
 
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Signup failed");
-
-      setNotification(`✅ Signup successful as ${role}!`);
-      setError("");
-      alert(`✅ Signup successful as ${role}!`);
-      setIsSignUp(false);
-      setSignupInfo({ username: "", email: "", password: "", role: "" });
-    } catch (err) {
-      setError(err.message);
-      alert(`❌ Signup failed: ${err.message}`);
-    }
+    alert(`✅ Signup successful as ${role}!`);
+    setIsSignUp(false);
+    setSignupInfo({ username: "", email: "", password: "", role: "user" });
   };
 
-  // 🔐 Handle Sign In
-  const handleSignIn = async () => {
+  // 🔐 Handle Local Sign In
+  const handleSignIn = () => {
     const { email, password, role } = signinInfo;
 
-    if (!email || !password || !role) {
-      setError("Please fill all fields and select your role.");
-      alert("⚠️ Please fill all fields and select your role.");
+    if (!email || !password) {
+      alert("⚠️ Please fill all fields.");
       return;
     }
 
-    try {
-      let endpoint = "";
-
-      if (role === "admin") {
-        // ✅ Verify admin credentials locally
-        if (email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
-          setError("Only FoodyFlyAdmin can log in as admin.");
-          alert("🚫 Only FoodyFlyAdmin can log in as admin.");
-          return;
-        }
-        if (password !== ADMIN_PASSWORD) {
-          setError("Invalid admin credentials.");
-          alert("❌ Invalid admin credentials.");
-          return;
-        }
-
-        endpoint = `${API_URL}/admin/login`;
-      } else {
-        endpoint = `${API_URL}/user/login`;
+    // 🛡️ Admin login
+    if (role === "admin") {
+      if (email !== ADMIN_EMAIL || password !== ADMIN_PASSWORD) {
+        alert("❌ Invalid admin credentials.");
+        return;
       }
-
-      const res = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Login failed");
-
-      // 🗝️ Save credentials
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("role", role);
-      if (role === "admin") localStorage.setItem("adminName", ADMIN_USERNAME);
-
-      setNotification(`Welcome back, ${role}!`);
-      setError("");
-      alert(`🎉 Welcome back, ${role}!`);
-
-      setTimeout(() => {
-        navigate(role === "admin" ? "/admin/dashboard" : "/");
-      }, 1000);
-    } catch (err) {
-      setError(err.message);
-      setNotification("");
-      alert(`❌ Login failed: ${err.message}`);
+      localStorage.setItem("foodyfly_role", "admin");
+      localStorage.setItem("foodyfly_admin", ADMIN_USERNAME);
+      alert("🎉 Welcome Admin!");
+      navigate("/admin/dashboard");
+      return;
     }
+
+    // 👤 User login
+    const storedUser = JSON.parse(localStorage.getItem("foodyfly_user"));
+    if (!storedUser) {
+      alert("❌ No user found. Please sign up first.");
+      return;
+    }
+
+    if (storedUser.email !== email || storedUser.password !== password) {
+      alert("❌ Invalid email or password.");
+      return;
+    }
+
+    localStorage.setItem("foodyfly_role", "user");
+    alert("🎉 Welcome back, User!");
+    navigate("/account");
   };
 
   return (
@@ -143,12 +103,8 @@ export default function Account() {
           {isSignUp ? "Create Account" : "FoodyFly Login"}
         </h2>
 
-        {error && <p className="error-msg">{error}</p>}
-        {notification && <p className="notification-msg">{notification}</p>}
-
         {isSignUp ? (
           <>
-            {/* Sign Up */}
             <div className="input-box">
               <FaUser className="icon" />
               <input
@@ -199,9 +155,7 @@ export default function Account() {
                   setSignupInfo({ ...signupInfo, role: e.target.value })
                 }
               >
-                <option value="">Select Role</option>
                 <option value="user">User</option>
-                <option value="admin">Admin</option>
               </select>
             </div>
 
@@ -215,7 +169,6 @@ export default function Account() {
           </>
         ) : (
           <>
-            {/* Sign In */}
             <div className="input-box">
               <FaEnvelope className="icon" />
               <input
@@ -254,7 +207,6 @@ export default function Account() {
                   setSigninInfo({ ...signinInfo, role: e.target.value })
                 }
               >
-                <option value="">Select Role</option>
                 <option value="user">User</option>
                 <option value="admin">Admin</option>
               </select>

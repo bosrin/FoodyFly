@@ -1,53 +1,48 @@
-/* Navbar base */
 .navbar {
   background: linear-gradient(135deg, #221209, #2d180c);
   color: #ffa500;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem 12rem;
+  padding: 0.8rem 12rem; /* 🔹 Reduced from 12rem */
   position: sticky;
   top: 0;
   z-index: 100;
   font-family: 'Arial', sans-serif;
 }
 
-/* Logo */
 .logo {
   display: flex;
   align-items: center;
   cursor: pointer;
+  gap: 8px; 
 }
-
 .chef-hat {
-  font-size: 35px; 
-  margin-right: 5px; 
+  font-size: 26px;
+  margin-right: 8px;
 }
-
 .logo-text {
-  font-size: 35px;
+  font-size: 32px;
   font-weight: bold;
 }
 
-/* Nav Links */
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 20px;
+  gap: 20px; /* 🔹 More natural spacing */
 }
 
 .nav-links li a {
   color: #ffa500;
   text-decoration: none;
   font-size: 16px;
+
 }
 
 .nav-links li a:hover {
   color: #eaaf6b;
-  text-decoration: none;
+   text-decoration: none;
 }
-
-
 
 /* Hamburger */
 .hamburger {
