@@ -1,277 +1,223 @@
-/* 🌅 Global Styling */
-body {
-  background: linear-gradient(135deg, #1a0e05, #3a1d0b);
-  min-height: 100vh;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  font-family: "Poppins", sans-serif;
-  color: #fff;
-}
-
-/* 🔹 Dashboard Container */
-.admin-dashboard {
+/* ================= GLOBAL CONTAINER ================= */
+.admin-container {
   width: 100%;
-  max-width: 1000px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 2rem;
-  margin: 3rem 1rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* 🔹 Headings */
-.dashboard-title {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: #ffa500;
-  letter-spacing: 1px;
-}
-
-.dashboard-subtitle {
-  text-align: center;
-  font-size: 1.3rem;
-  margin: 1rem 0;
-  color: #ffcc80;
-  font-weight: 600;
-}
-
-/* 🔹 Tabs Section */
-.dashboard-tabs {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #2a180a, #0c0704 60%, #000);
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  padding: 40px 12px;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  backdrop-filter: blur(4px);
 }
 
-.dashboard-tabs button {
-  background: rgba(255, 165, 0, 0.15);
-  color: #ffa500;
-  border: 1px solid rgba(255, 165, 0, 0.4);
-  border-radius: 10px;
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.3s ease;
+/* ================= GLASS WRAPPER ================= */
+.admin-wrapper {
+  width: 92%;
+  max-width: 1150px;
+  background: rgba(40, 25, 10, 0.55);
+  border: 1px solid rgba(255, 223, 157, 0.15);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 45px rgba(255, 176, 72, 0.12);
+  border-radius: 20px;
+  padding: 40px 35px;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= TITLE ================= */
+.admin-title {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 600;
+  color: #ffcf70;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px rgba(255, 191, 0, 0.35);
+}
+
+/* ================= TABS ================= */
+.admin-tabs {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
 }
 
-.dashboard-tabs button:hover {
-  background: rgba(255, 165, 0, 0.3);
+.admin-tabs button {
+  background: rgba(255, 207, 112, 0.07);
+  color: #ffcf70;
+  padding: 12px 26px;
+  border-radius: 35px;
+  font-size: 15px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 207, 112, 0.25);
+  transition: 0.25s ease;
+  letter-spacing: 0.4px;
+}
+
+.admin-tabs button:hover,
+.admin-tabs button.active {
+  background: linear-gradient(90deg, #ffb84c, #ffdd9a);
+  color: #000;
+  box-shadow: 0 0 14px rgba(255, 216, 123, 0.55);
   transform: translateY(-2px);
 }
 
-.dashboard-tabs .active-tab {
-  background: linear-gradient(135deg, #ff9800, #ff6a00);
-  color: #fff;
-  box-shadow: 0 0 10px rgba(255, 165, 0, 0.6);
-  border-color: transparent;
-}
-
-/* 🔹 Menu Form */
+/* ================= FORM ================= */
 .menu-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  margin-bottom: 2rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 22px;
+  border-radius: 14px;
+  display: grid;
+  gap: 14px;
+  margin-bottom: 30px;
 }
 
-.menu-form input,
-.menu-form select {
-  background: rgba(255, 255, 255, 0.1);
+.menu-form input {
+  width: 100%;
+  padding: 13px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.06);
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  padding: 0.6rem 1rem;
-  font-size: 1rem;
-  width: 220px;
   outline: none;
-  transition: 0.3s;
+  transition: 0.25s;
 }
 
-.menu-form input:focus,
-.menu-form select:focus {
-  border-color: #ffa500;
-  box-shadow: 0 0 6px rgba(255, 165, 0, 0.6);
+.menu-form input:focus {
+  border-color: #ffcf70;
+  box-shadow: 0 0 8px rgba(255, 207, 112, 0.35);
 }
 
-/* 🔹 Buttons */
-.submit-btn,
-.edit-btn,
-.delete-btn {
-  border: none;
+.menu-form input::placeholder {
+  color: #bfbfbf;
+}
+
+/* Add/Update Button */
+.add-btn {
+  width: 100%;
+  background: linear-gradient(90deg, #ffb84c, #ffd88f);
+  padding: 13px;
+  border-radius: 12px;
+  font-weight: 700;
   cursor: pointer;
-  border-radius: 8px;
-  padding: 0.6rem 1.2rem;
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
+  color: #000;
+  transition: 0.25s;
+  border: none;
+  letter-spacing: 0.5px;
 }
 
-.submit-btn {
-  background: linear-gradient(135deg, #ff9800, #ff6a00);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
+.add-btn:hover {
+  background: linear-gradient(90deg, #ffd88f, #ffb84c);
+  transform: translateY(-1px);
 }
 
-.submit-btn:hover {
-  box-shadow: 0 0 10px rgba(255, 165, 0, 0.6);
-  transform: scale(1.05);
-}
-
-.edit-btn {
-  background: rgba(255, 255, 255, 0.15);
-  color: #ffa500;
-  margin-right: 6px;
-}
-
-.edit-btn:hover {
-  background: #ffa500;
-  color: #fff;
-}
-
-.delete-btn {
-  background: rgba(255, 0, 0, 0.15);
-  color: #ff4d4d;
-}
-
-.delete-btn:hover {
-  background: #ff4d4d;
-  color: #fff;
-}
-
-/* 🔹 Menu / Order Tables */
+/* ================= TABLE ================= */
 .menu-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1rem;
-  overflow-x: auto;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.menu-table thead {
+  background: rgba(255, 207, 112, 0.14);
 }
 
 .menu-table th,
 .menu-table td {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0.8rem;
-  text-align: center;
+  padding: 15px 12px;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 
 .menu-table th {
-  background: rgba(255, 165, 0, 0.2);
-  color: #ffa500;
+  color: #ffcf70;
   font-weight: 600;
+  text-transform: uppercase;
+  font-size: 13px;
 }
 
-.menu-table tr:nth-child(even) {
-  background: rgba(255, 255, 255, 0.05);
+.menu-table tbody tr:hover {
+  background: rgba(255, 207, 112, 0.06);
 }
 
-.menu-table img.menu-img {
-  width: 50px;
-  height: 50px;
-  border-radius: 8px;
+/* Empty text */
+.empty-text {
+  text-align: center;
+  padding: 20px;
+  color: #d8d8d8;
+  font-size: 15px;
+}
+
+/* ================= IMAGE ================= */
+.item-img {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
   object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.12);
 }
 
-/* 🔔 Notifications */
-.notifications {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.notification {
-  background: rgba(255, 165, 0, 0.2);
-  border: 1px solid rgba(255, 165, 0, 0.5);
-  padding: 0.8rem 1rem;
+/* ================= ACTION BUTTONS ================= */
+.edit-btn,
+.delete-btn {
+  padding: 8px 10px;
   border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.edit-btn {
+  background: #2d8bff;
   color: #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  animation: fadeIn 0.3s ease;
+}
+.edit-btn:hover {
+  background: #5ba4ff;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.delete-btn {
+  background: #ff4444;
+  color: #fff;
+}
+.delete-btn:hover {
+  background: #ff6666;
 }
 
-/* 🔹 Responsive Design for Tablet & Phone */
-@media (max-width: 992px) {
-  .admin-dashboard {
-    padding: 1.5rem;
-    margin: 2rem 1rem;
-  }
-
-  .menu-form input,
-  .menu-form select {
-    width: 100%;
-  }
+/* ================= RESPONSIVE ================= */
+@media (max-width: 650px) {
+  .admin-wrapper { padding: 25px 18px; }
+  .admin-title { font-size: 26px; }
+  .menu-table th, .menu-table td { font-size: 12px; padding: 8px; }
+  .item-img { width: 40px; height: 40px; }
 }
-
-@media (max-width: 768px) {
-  .dashboard-title {
-    font-size: 1.7rem;
+/* ===== MOBILE FIX: Tabs should not break into next line ===== */
+@media (max-width: 576px) {
+  .admin-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 6px;
+    scrollbar-width: none;   /* Hide scrollbar */
   }
 
-  .dashboard-tabs {
-    flex-direction: column;
-    align-items: center;
+  .admin-tabs::-webkit-scrollbar {
+    display: none;           /* Hide scrollbar (Chrome) */
   }
 
-  .dashboard-tabs button {
-    width: 90%;
-    padding: 0.8rem;
-    font-size: 0.95rem;
-  }
-
-  .menu-table th,
-  .menu-table td {
-    font-size: 0.9rem;
-    padding: 0.6rem;
-  }
-
-  .menu-table img.menu-img {
-    width: 40px;
-    height: 40px;
-  }
-}
-
-@media (max-width: 480px) {
-  .dashboard-title {
-    font-size: 1.5rem;
-  }
-
-  .menu-form {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .menu-form input,
-  .menu-form select,
-  .submit-btn {
-    width: 100%;
-  }
-
-  .dashboard-tabs button {
-    font-size: 0.9rem;
+  .admin-tabs button {
+    white-space: nowrap;
+    flex: 0 0 auto;          /* Prevent breaking */
   }
 }

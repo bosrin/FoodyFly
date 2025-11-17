@@ -247,18 +247,20 @@
 }
 
 /* ===== Footer Section ===== */
+/* 🌿 FOOTER */
 .footer {
-  background-color: #2d180c;
+  background-color: #111122;
   color: #f8f8f8;
-  padding: 60px 8%;
+  padding: 60px 30px; /* বাম-ডান 30px */
   font-family: 'Poppins', sans-serif;
   position: relative;
 }
 
+/* 🌿 GRID LAYOUT */
 .footer-columns {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 40px; /* responsive-friendly gap */
+  grid-template-columns: repeat(3, 1fr); /* তিনটা সমান কলাম */
+  gap: 30px; /* তিন কলামের মাঝে সমান ফাঁকা */
   align-items: flex-start;
 }
 

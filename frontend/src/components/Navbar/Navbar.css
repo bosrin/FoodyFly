@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem 12rem; /* 🔹 Reduced from 12rem */
+  padding: 0.8rem 10rem; 
   position: sticky;
   top: 0;
   z-index: 100;
@@ -29,7 +29,9 @@
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 20px; /* 🔹 More natural spacing */
+  gap: 20px; 
+   justify-content: center;
+  flex: 1;
 }
 
 .nav-links li a {
