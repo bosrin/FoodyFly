@@ -698,7 +698,7 @@
 
 /* ===== Footer Section ===== */
 .footer {
-  background-color:#2d180c; /* deep background for contrast */
+  background-color: linear-gradient(135deg, #221209, #2d180c); /* deep background for contrast */
   color: #f8f8f8;
   padding: 60px 8%;
   font-family: 'Poppins', sans-serif;

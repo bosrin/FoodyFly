@@ -249,7 +249,7 @@
 /* ===== Footer Section ===== */
 /* 🌿 FOOTER */
 .footer {
-  background-color: #111122;
+  background-color:  linear-gradient(135deg, #221209, #2d180c);
   color: #f8f8f8;
   padding: 60px 30px; /* বাম-ডান 30px */
   font-family: 'Poppins', sans-serif;
